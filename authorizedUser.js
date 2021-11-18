@@ -9,13 +9,12 @@ const kite = (req,res,next) => {
 const authorizedUser = (req, res, next) => {
 
     const { apikey } = req.query
-    if (apikey === '')
-    {    console.log('authorized')
-    //modifies the request object for the next response
+    if (apikey === '') {
+        console.log('authorized')
+        //modifies the request object for the next response
         req.user = { email: apikey, id: 1 }
         next()
-    }
-    else {
+    } else {
         console.log('unauthorized access')
         res.send({result:[], status: 401, message: 'unauthorized access: use email as api key'})
     }
