@@ -6,10 +6,18 @@ const kite = (req,res,next) => {
     next()
 }
 
+function authorizedEmail(inputText) {
+    var requireEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    if (inputText.value.match(requireEmail)) {
+        console.log('not a valid email address')
+        return false
+    }
+}
+
 const authorizedUser = (req, res, next) => {
 
     const { apikey } = req.query
-    if (apikey === '') {
+    if (apikey === authorizedEmail) {
         console.log('authorized')
         //modifies the request object for the next response
         req.user = { email: apikey, id: 1 }

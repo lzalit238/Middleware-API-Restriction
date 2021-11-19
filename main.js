@@ -15,6 +15,10 @@ app.get('/api', (req, res) => {
     res.send('at the end of the string there is a kite')
 })
 
+app.get('/api/products', (req,res) => {
+    console.log(req.email)
+})
+
 app.listen(5000, () => {
     console.log('server is listening on port 5000...')
 })
