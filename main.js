@@ -4,7 +4,7 @@ const authorizedUser = require('./authorizedUser')
 const kite = require('./authorizedUser')
 const app = express()
 
-app.use([kite, authorizedUser])
+app.use([kite, authorizedUser, authorize])
 
 app.get('/', (req, res) => {
     res.send('<h1>Home</h1>')
